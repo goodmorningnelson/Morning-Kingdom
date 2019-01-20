@@ -1,0 +1,16 @@
+.coverArea {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../Images/yellow-bg.jpg");
+    background-size: cover;
+
+    .coverTitle {
+        font-size: 80px;
+        font-weight: 900;
+        color: rgba(255,255,255,0.3);
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translate(-50%,-50%);
+    }
+}
