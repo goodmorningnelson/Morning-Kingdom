@@ -1,0 +1,319 @@
+//LIGHT THEME
+$lightBackground : #fff;
+$lightPrimary: #0F7AFF;
+$lightTextColor: #000;
+
+//DARK THEME
+$darkBackground : #222A34;
+$darkPrimary: #FFEA22;
+$darkTextColor: #fff;
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+body {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    background: $lightBackground;
+    font-family: 'Mulish', sans-serif;
+    color: $lightTextColor;
+    font-size: 19px;
+    font-weight: 400;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 700;
+        color: $lightPrimary;
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: $lightTextColor;
+        margin-bottom: 45px;
+    }
+
+    p {
+      margin-bottom: 20px;
+
+      .modalTrigger {
+          color: red;
+          cursor: pointer;
+      }
+    }
+
+    
+
+    .themeToggle {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        border: 2px solid $darkBackground;
+        cursor: pointer;
+    }
+
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr minmax(20px, 700px) 1fr;
+        grid-template-rows: 100vh auto 200px;
+        gap: 0px 0px;
+        grid-template-areas:
+          ". coverArea ."
+          ". qualificationsArea ."
+          "contactArea contactArea contactArea";
+      
+      
+      .coverArea { 
+          grid-area: coverArea; 
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+
+        .tutoWrapper {
+            position: relative;
+            #tutoTrigger {
+                position: relative;
+                display: inline-block; 
+                cursor: pointer;
+
+                &:after {
+                    content: "👋🏻";
+                    position: absolute;
+                    top: -83px;
+                    left: 0;
+                    width: 60px;
+                    height: 75px;
+                    font-size: 60px;
+                    transform: translateY(0px);
+                    
+                    
+                }
+
+                &:hover {
+                    &:after {
+                        content: "👇🏻";
+                                animation: pointingHand 500ms ease-in-out infinite alternate;
+        
+                                @keyframes pointingHand {
+                                    0% {transform: translateY(0px);}
+                                    100% {transform: translateY(10px);}
+                                }
+                    }
+                }
+            }
+            .tuto{
+                position: absolute;
+                font-family: 'Caveat', cursive;
+                font-size: 20px;
+                color: #9B9B9B;
+                line-height: 22px;
+
+                &#tuto1 {
+                    top: -50px;
+                    left: 200px;
+                    transform: rotate(6deg);
+                }
+                &#tuto2 {
+                    top: -50px;
+                    left: 200px;
+                    display: none;
+                }
+            }
+
+            #tutoTrigger:hover ~ #tuto1 {display: none;}
+            #tutoTrigger:hover ~ #tuto2 {display: block;}
+        }
+
+          .link {
+            position: relative;
+            &:hover {
+                  cursor:pointer;
+                  
+                  &:after {
+                    content:"";
+                    position: absolute;
+                    left: 0px;
+                    top: 14px;
+                    width: 100%;
+                    height: 10px;
+                    background: pink;
+                    z-index: -1;
+                }
+            }
+
+              
+
+          }
+
+        }
+      
+      .qualificationsArea { 
+          grid-area: qualificationsArea; 
+
+          .qualificationBloc {
+              position: relative;
+              height: 160px;
+              width: 100%;
+              //background-color: papayawhip;
+              //margin-bottom: 24px;
+              cursor: pointer;
+              padding-top: 20px;
+
+              .heading {
+                position: absolute;
+                top: 0;
+                left: -32px;
+                color: #E8E8E8;
+                font-weight: 900;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 60px;
+                    height: 3px;
+                    background-color: #E8E8E8;
+                    top: 50%;
+                    left: 30px;
+                    transform: translateY(-50%);
+                }
+              }
+
+              .label {
+                position: relative;
+                font-size:65px;
+                font-weight: 900;
+                color: #E8E8E8;
+                //transition: 300ms ease-in-out;
+
+                .captionContainer {
+                    position: absolute;
+                    color: $lightTextColor;
+                    font-weight: 400;
+                    font-size: 16px;
+                    opacity: 0;
+                    transition: 150ms ease-in-out;
+                    left: 10px;
+                    bottom: -15px;
+                }
+
+                &:before {
+                    content: attr(data-letters);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: $lightPrimary;
+                    opacity: 0;
+                    transition: 230ms ease-in-out;
+                }
+              }
+
+                &:hover {
+                    .label {
+                        &:before {
+                            opacity: 1;
+                            //top: -10px;
+                            //left: 10px;
+                        }
+
+                        .captionContainer {left: 20px; bottom: -18px; opacity: 1;}
+                    }
+                    
+                }
+
+          }
+        }
+      
+      .contactArea { grid-area: contactArea; background: $lightPrimary;}
+      
+    }
+    
+    
+
+    .modal {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        width: 440px;
+        height: 400px;
+        opacity: 0;    
+        visibility: hidden;
+        z-index: 2;
+        background: $lightBackground;   
+        overflow-y:auto;
+        border: 2px solid $darkBackground;
+        box-shadow: 0 5px 0 0 $darkBackground, 0 22px 24px 0 rgba(0,0,0,0.1);
+        border-radius: 10px;
+
+        &:focus {z-index: 3; outline: 0;}
+        
+
+        .modalHead {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            background: $lightBackground;
+
+            .dragger {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 30px;
+                height: 30px;
+                background: palevioletred;
+            }
+            .closeModal {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                background: palegreen; 
+            }
+        }
+
+        .modalContent {
+            overflow-y: auto;
+            padding: 40px 40px 60px 40px;
+        }
+
+
+        &.modalShow {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    &.darkTheme {
+        background: $darkBackground;
+        color: $darkTextColor;
+
+        h1 {color: $darkPrimary;}
+        h2 {color: $darkTextColor;}
+
+        .qualificationsArea .qualificationBloc .label:before {
+            color: $darkPrimary;
+        }
+        
+        
+
+        .themeToggle {
+            border: 2px solid $lightBackground;
+        }
+
+        .contactArea {background: $darkPrimary;}
+
+        .modal {background: $darkBackground;}
+    }
+    
+}

@@ -1,0 +1,347 @@
+@charset "UTF-8";
+body {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  background: #fff;
+  font-family: 'Mulish', sans-serif;
+  color: #000;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+body h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0F7AFF;
+  margin-bottom: 40px;
+}
+
+body h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 45px;
+}
+
+body p {
+  margin-bottom: 20px;
+}
+
+body p .modalTrigger {
+  color: red;
+  cursor: pointer;
+}
+
+body .themeToggle {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 2px solid #222A34;
+  cursor: pointer;
+}
+
+body .grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr minmax(20px, 700px) 1fr;
+      grid-template-columns: 1fr minmax(20px, 700px) 1fr;
+  -ms-grid-rows: 100vh auto 200px;
+      grid-template-rows: 100vh auto 200px;
+  gap: 0px 0px;
+      grid-template-areas: ". coverArea ." ". qualificationsArea ." "contactArea contactArea contactArea";
+}
+
+body .grid-container .coverArea {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: coverArea;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .grid-container .coverArea .tutoWrapper {
+  position: relative;
+}
+
+body .grid-container .coverArea .tutoWrapper #tutoTrigger {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+body .grid-container .coverArea .tutoWrapper #tutoTrigger:after {
+  content: "👋🏻";
+  position: absolute;
+  top: -83px;
+  left: 0;
+  width: 60px;
+  height: 75px;
+  font-size: 60px;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+body .grid-container .coverArea .tutoWrapper #tutoTrigger:hover:after {
+  content: "👇🏻";
+  -webkit-animation: pointingHand 500ms ease-in-out infinite alternate;
+          animation: pointingHand 500ms ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes pointingHand {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+}
+
+@keyframes pointingHand {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+}
+
+body .grid-container .coverArea .tutoWrapper .tuto {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: #9B9B9B;
+  line-height: 22px;
+}
+
+body .grid-container .coverArea .tutoWrapper .tuto#tuto1 {
+  top: -50px;
+  left: 200px;
+  -webkit-transform: rotate(6deg);
+          transform: rotate(6deg);
+}
+
+body .grid-container .coverArea .tutoWrapper .tuto#tuto2 {
+  top: -50px;
+  left: 200px;
+  display: none;
+}
+
+body .grid-container .coverArea .tutoWrapper #tutoTrigger:hover ~ #tuto1 {
+  display: none;
+}
+
+body .grid-container .coverArea .tutoWrapper #tutoTrigger:hover ~ #tuto2 {
+  display: block;
+}
+
+body .grid-container .coverArea .link {
+  position: relative;
+}
+
+body .grid-container .coverArea .link:hover {
+  cursor: pointer;
+}
+
+body .grid-container .coverArea .link:hover:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 14px;
+  width: 100%;
+  height: 10px;
+  background: pink;
+  z-index: -1;
+}
+
+body .grid-container .qualificationsArea {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: qualificationsArea;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc {
+  position: relative;
+  height: 160px;
+  width: 100%;
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc .heading {
+  position: absolute;
+  top: 0;
+  left: -32px;
+  color: #E8E8E8;
+  font-weight: 900;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc .heading:after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #E8E8E8;
+  top: 50%;
+  left: 30px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+body .grid-container .qualificationsArea .qualificationBloc .label {
+  position: relative;
+  font-size: 65px;
+  font-weight: 900;
+  color: #E8E8E8;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc .label .captionContainer {
+  position: absolute;
+  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  opacity: 0;
+  -webkit-transition: 150ms ease-in-out;
+  transition: 150ms ease-in-out;
+  left: 10px;
+  bottom: -15px;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc .label:before {
+  content: attr(data-letters);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #0F7AFF;
+  opacity: 0;
+  -webkit-transition: 230ms ease-in-out;
+  transition: 230ms ease-in-out;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc:hover .label:before {
+  opacity: 1;
+}
+
+body .grid-container .qualificationsArea .qualificationBloc:hover .label .captionContainer {
+  left: 20px;
+  bottom: -18px;
+  opacity: 1;
+}
+
+body .grid-container .contactArea {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: contactArea;
+  background: #0F7AFF;
+}
+
+body .modal {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 400px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  background: #fff;
+  overflow-y: auto;
+  border: 2px solid #222A34;
+  -webkit-box-shadow: 0 5px 0 0 #222A34, 0 22px 24px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 0 0 #222A34, 0 22px 24px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+body .modal:focus {
+  z-index: 3;
+  outline: 0;
+}
+
+body .modal .modalHead {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #fff;
+}
+
+body .modal .modalHead .dragger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: palevioletred;
+}
+
+body .modal .modalHead .closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: palegreen;
+}
+
+body .modal .modalContent {
+  overflow-y: auto;
+  padding: 40px 40px 60px 40px;
+}
+
+body .modal.modalShow {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.darkTheme {
+  background: #222A34;
+  color: #fff;
+}
+
+body.darkTheme h1 {
+  color: #FFEA22;
+}
+
+body.darkTheme h2 {
+  color: #fff;
+}
+
+body.darkTheme .qualificationsArea .qualificationBloc .label:before {
+  color: #FFEA22;
+}
+
+body.darkTheme .themeToggle {
+  border: 2px solid #fff;
+}
+
+body.darkTheme .contactArea {
+  background: #FFEA22;
+}
+
+body.darkTheme .modal {
+  background: #222A34;
+}
+/*# sourceMappingURL=styles.css.map */
