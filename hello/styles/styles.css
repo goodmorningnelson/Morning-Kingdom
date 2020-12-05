@@ -25,6 +25,11 @@ body h2 {
   margin-bottom: 45px;
 }
 
+body h3 {
+  font-size: 20px;
+  color: #000;
+}
+
 body p {
   margin-bottom: 20px;
 }
@@ -176,72 +181,14 @@ body .grid-container .qualificationsArea {
   grid-area: qualificationsArea;
 }
 
-body .grid-container .qualificationsArea .qualificationBloc {
-  position: relative;
-  height: 160px;
-  width: 100%;
-  cursor: pointer;
-  padding-top: 20px;
+body .grid-container .qualificationsArea .qualificationRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-body .grid-container .qualificationsArea .qualificationBloc .heading {
-  position: absolute;
-  top: 0;
-  left: -32px;
-  color: #E8E8E8;
-  font-weight: 900;
-}
-
-body .grid-container .qualificationsArea .qualificationBloc .heading:after {
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 3px;
-  background-color: #E8E8E8;
-  top: 50%;
-  left: 30px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-body .grid-container .qualificationsArea .qualificationBloc .label {
-  position: relative;
-  font-size: 65px;
-  font-weight: 900;
-  color: #E8E8E8;
-}
-
-body .grid-container .qualificationsArea .qualificationBloc .label .captionContainer {
-  position: absolute;
-  color: #000;
-  font-weight: 400;
-  font-size: 16px;
-  opacity: 0;
-  -webkit-transition: 150ms ease-in-out;
-  transition: 150ms ease-in-out;
-  left: 10px;
-  bottom: -15px;
-}
-
-body .grid-container .qualificationsArea .qualificationBloc .label:before {
-  content: attr(data-letters);
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #0F7AFF;
-  opacity: 0;
-  -webkit-transition: 230ms ease-in-out;
-  transition: 230ms ease-in-out;
-}
-
-body .grid-container .qualificationsArea .qualificationBloc:hover .label:before {
-  opacity: 1;
-}
-
-body .grid-container .qualificationsArea .qualificationBloc:hover .label .captionContainer {
-  left: 20px;
-  bottom: -18px;
-  opacity: 1;
+body .grid-container .qualificationsArea .qualificationRow h3 {
+  margin-right: 42px;
 }
 
 body .grid-container .contactArea {
@@ -281,10 +228,23 @@ body .modal:focus {
   outline: 0;
 }
 
+body .modal h1 {
+  color: #000;
+}
+
+body .modal p {
+  font-size: 16px;
+}
+
+body .modal.dragging .modalHead .dragger {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
 body .modal .modalHead {
   position: relative;
   width: 100%;
-  height: 30px;
+  height: 50px;
   background: #fff;
 }
 
@@ -294,7 +254,12 @@ body .modal .modalHead .dragger {
   left: 0;
   width: 30px;
   height: 30px;
-  background: palevioletred;
+  background: url(../assets/drag-handle.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 body .modal .modalHead .closeModal {
@@ -303,7 +268,11 @@ body .modal .modalHead .closeModal {
   right: 0;
   width: 30px;
   height: 30px;
-  background: palegreen;
+  background: url(../assets/close.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
 body .modal .modalContent {

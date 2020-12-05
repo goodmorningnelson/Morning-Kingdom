@@ -36,6 +36,11 @@ body {
         margin-bottom: 45px;
     }
 
+    h3 {
+        font-size: 20px;
+        color: $lightTextColor;
+    }
+
     p {
       margin-bottom: 20px;
 
@@ -155,80 +160,15 @@ body {
 
         }
       
-      .qualificationsArea { 
-          grid-area: qualificationsArea; 
-
-          .qualificationBloc {
-              position: relative;
-              height: 160px;
-              width: 100%;
-              //background-color: papayawhip;
-              //margin-bottom: 24px;
-              cursor: pointer;
-              padding-top: 20px;
-
-              .heading {
-                position: absolute;
-                top: 0;
-                left: -32px;
-                color: #E8E8E8;
-                font-weight: 900;
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    width: 60px;
-                    height: 3px;
-                    background-color: #E8E8E8;
-                    top: 50%;
-                    left: 30px;
-                    transform: translateY(-50%);
-                }
-              }
-
-              .label {
-                position: relative;
-                font-size:65px;
-                font-weight: 900;
-                color: #E8E8E8;
-                //transition: 300ms ease-in-out;
-
-                .captionContainer {
-                    position: absolute;
-                    color: $lightTextColor;
-                    font-weight: 400;
-                    font-size: 16px;
-                    opacity: 0;
-                    transition: 150ms ease-in-out;
-                    left: 10px;
-                    bottom: -15px;
-                }
-
-                &:before {
-                    content: attr(data-letters);
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    color: $lightPrimary;
-                    opacity: 0;
-                    transition: 230ms ease-in-out;
-                }
-              }
-
-                &:hover {
-                    .label {
-                        &:before {
-                            opacity: 1;
-                            //top: -10px;
-                            //left: 10px;
-                        }
-
-                        .captionContainer {left: 20px; bottom: -18px; opacity: 1;}
-                    }
-                    
-                }
-
-          }
+        .qualificationsArea { 
+            grid-area: qualificationsArea; 
+            
+            .qualificationRow {
+                display: flex;
+                
+                h3 {margin-right: 42px;}
+            }
+          
         }
       
       .contactArea { grid-area: contactArea; background: $lightPrimary;}
@@ -255,12 +195,17 @@ body {
         border-radius: 10px;
 
         &:focus {z-index: 3; outline: 0;}
+
+        h1 {color: $lightTextColor;}
+        p {font-size: 16px;}
+
+        &.dragging .modalHead .dragger {cursor: grabbing;}
         
 
         .modalHead {
             position: relative;
             width: 100%;
-            height: 30px;
+            height: 50px;
             background: $lightBackground;
 
             .dragger {
@@ -269,7 +214,11 @@ body {
                 left: 0;
                 width: 30px;
                 height: 30px;
-                background: palevioletred;
+                background: url(../assets/drag-handle.svg);
+                background-size: 24px 24px;
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: grab;
             }
             .closeModal {
                 position: absolute;
@@ -277,7 +226,11 @@ body {
                 right: 0;
                 width: 30px;
                 height: 30px;
-                background: palegreen; 
+                background: url(../assets/close.svg);
+                background-size: 24px 24px;
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer; 
             }
         }
 
