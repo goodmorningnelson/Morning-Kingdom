@@ -246,38 +246,93 @@ body .modal .modalHead {
   width: 100%;
   height: 50px;
   background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 body .modal .modalHead .dragger {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  background: url(../assets/drag-handle.svg);
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: relative;
+  height: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   cursor: -webkit-grab;
   cursor: grab;
+  margin-left: 7px;
+  margin-right: 44px;
+}
+
+body .modal .modalHead .dragger:after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #222A34;
+  -webkit-transition: 150ms ease-in-out;
+  transition: 150ms ease-in-out;
+}
+
+body .modal .modalHead .dragger:hover:after {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 
 body .modal .modalHead .closeModal {
   position: absolute;
   top: 0;
   right: 0;
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+body .modal .modalHead .closeModal:after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background: url(../assets/close.svg);
-  background-size: 24px 24px;
+  background-size: 32px 32px;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
+}
+
+body .modal .modalHead .dragger:hover + .closeModal:after {
+  background: url(../assets/move.svg);
 }
 
 body .modal .modalContent {
   overflow-y: auto;
-  padding: 40px 40px 60px 40px;
+  padding: 0px 40px 60px 40px;
+}
+
+body .modal .modalContent .contentImgWrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .modal .modalContent .contentImgWrapper img {
+  width: 100%;
+}
+
+body .modal .modalContent .contentImgWrapper img:nth-child(even) {
+  margin-left: 8px;
 }
 
 body .modal.modalShow {

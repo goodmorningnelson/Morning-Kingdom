@@ -11,6 +11,7 @@ function themeToggle() {
 
 // Variables 
 var modal = document.getElementsByClassName("modal");
+var modalDragger = document.getElementsByClassName("dragger");
 
 var modalTrigger = document.getElementsByClassName("modalTrigger");
 
@@ -67,40 +68,58 @@ function endTuto() {
 }
 
 
-//DRAGGABLE
-var x, y, target = null;
 
-document.addEventListener('mousedown', function(e) {
-  var clickedDragger = false;
-  for(var i = 0; e.path[i] !== document.body; i++) {
-    if (e.path[i].classList.contains('dragger')) {
-      clickedDragger = true;
+
+
+// Wrap the module in a self-executing anonymous function
+// to avoid leaking variables into global scope:
+// eslint-disable-next-line wrap-iife
+(function (document) {
+    // Enable ECMAScript 5 strict mode within this function:
+    'use strict';
+    // Obtain a node list of all elements that have class="modal":
+    var draggable = document.getElementsByClassName('modal'),
+        draggableCount = draggable.length, // cache the length
+        i; // iterator placeholder
+        /* console.log('sfjhbsf', draggable) */
+    // Obtain a node list of all elements that have class="dragger":
+    var dragHandle = document.getElementsByClassName('dragger'),
+        dragHandleCount = dragHandle.length, // cache the length
+        i; // iterator placeholder
+    // This function initializes the drag of an element where an
+    // event ("mousedown") has occurred:
+    function startDrag(evt, i) {
+        // The element's position is based on its top left corner,
+        // but the mouse coordinates are inside of it, so we need
+        // to calculate the positioning difference:
+       /*  console.log('sbfjsfbsjbfj', dragHandle.length)
+            console.log('sbfjsfbsjbfj',draggable.length) */
+            // "this" refers to the current element,
+        var diffX = evt.clientX - draggable[i].offsetLeft,
+            diffY = evt.clientY - draggable[i].offsetTop,
+            that = draggable[i];
+                         // let's keep it in cache for later use.
+        // moveAlong places the current element (referenced by "that")
+        // according to the current cursor position:
+        function moveAlong(evt) {
+            that.style.left = (evt.clientX - diffX) + 'px';
+            that.style.top = (evt.clientY - diffY) + 'px';
+        }
+        // stopDrag removes event listeners from the element,
+        // thus stopping the drag:
+        function stopDrag() {
+            document.removeEventListener('mousemove', moveAlong);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('mousemove', moveAlong);
     }
-    else if (clickedDragger && e.path[i].classList.contains('modal')) {
-      target = e.path[i];
-      target.classList.add('dragging');
-      x = e.clientX - target.style.left.slice(0, -2);
-      y = e.clientY - target.style.top.slice(0, -2);
-      return;
-    }
-  }
-});
-
-document.addEventListener('mouseup', function() {
-  if (target !== null) target.classList.remove('dragging');
-  target = null;
-});
-
-document.addEventListener('mousemove', function(e) {
-  if (target === null) return;
-  target.style.left = e.clientX - x + 'px';
-  target.style.top = e.clientY - y + 'px';
-  var pRect = target.parentElement.getBoundingClientRect();
-  var tgtRect = target.getBoundingClientRect();
-
-  if (tgtRect.left < pRect.left) target.style.left = 0;
-  if (tgtRect.top < pRect.top) target.style.top = 0;
-  if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
-  if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
-});
-
+    // Now that all the variables and functions are created,
+    // we can go on and make the elements draggable by assigning
+    // a "startDrag" function to a "mousedown" event that occurs
+    // on those elements:
+  /*   console.log('skfkdnkdf', dragHandle) */
+    Array.from(dragHandle).forEach((item, index) => {
+        item.addEventListener('mousedown', (evt) => startDrag(evt, index));
+    });
+  }(document));
