@@ -43,7 +43,7 @@ html
                 
             .contactArea
 
-        .modal#m-tuto(tabindex="0")
+        .modal#m-tuto(tabindex="0" style="left: 100px;")
             .modalHead
                 .dragger
                 .closeModal(onclick='closeMe("m-tuto")')
@@ -55,6 +55,9 @@ html
                 p Scroll to read more..
                 .contentImgWrapper
                     img(src="/assets/testImg.png")
+                h1 This is a box.
+                .divider#endOftutorialCaption
+                .button(onclick='closeMe("m-tuto")') Continue exploring
                     
         .modal#m-sparted(tabindex="0")
             .modalHead

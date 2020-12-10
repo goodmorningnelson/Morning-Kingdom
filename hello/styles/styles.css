@@ -311,6 +311,7 @@ body .modal .modalHead .dragger:hover + .closeModal:after {
 body .modal .modalContent {
   overflow-y: auto;
   padding: 0px 40px 60px 40px;
+  overscroll-behavior: contain;
 }
 
 body .modal .modalContent .contentImgWrapper {
@@ -325,6 +326,7 @@ body .modal .modalContent .contentImgWrapper {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 body .modal .modalContent .contentImgWrapper img {
@@ -333,6 +335,44 @@ body .modal .modalContent .contentImgWrapper img {
 
 body .modal .modalContent .contentImgWrapper img:nth-child(even) {
   margin-left: 8px;
+}
+
+body .modal .modalContent .divider {
+  position: relative;
+  width: 100%;
+  margin: 60px 0 16px 0;
+  height: 1px;
+  background: #b4b4b4;
+}
+
+body .modal .modalContent .divider#endOftutorialCaption:after {
+  content: "You have completed the tutorial !";
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: #9B9B9B;
+  right: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-57%) rotate(1deg);
+          transform: translateY(-57%) rotate(1deg);
+  background: #fff;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+body .modal .modalContent .button {
+  cursor: pointer;
+  margin: 56px auto -32px auto;
+  background: #0F7AFF;
+  padding: 9px 30px 10px 30px;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+body .modal .modalContent .button:hover {
+  background: #338EFF;
 }
 
 body .modal.modalShow {
